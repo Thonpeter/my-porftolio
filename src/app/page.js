@@ -11,6 +11,7 @@ import { useForm } from 'react-hook-form';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSpring, animated } from 'react-spring';
+import Image from 'next/image';
 
 export default function Home() {
   const typedRef = useRef(null);
@@ -59,11 +60,26 @@ export default function Home() {
 
   const onSubmit = async (data) => {
     setIsSubmitting(true);
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    reset();
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        toast.success('Message sent successfully!');
+        reset();
+      } else {
+        throw new Error('Error sending message');
+      }
+    } catch (error) {
+      console.error('Error sending message:', error);
+      toast.error('Error sending message');
+    }
     setIsSubmitting(false);
-    toast.success('Message sent successfully!');
   };
 
   return (
@@ -106,7 +122,7 @@ export default function Home() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-xl sm:text-2xl mb-8"
         >
-          Hi, I'm Thon Peter Mawut, a{' '}
+          Hi, I&apos;m Thon Peter Mawut, a{' '}
           <span ref={typedRef} className="text-indigo-400 font-bold"></span>
         </motion.p>
         <motion.div
@@ -134,15 +150,20 @@ export default function Home() {
       <section id="about" className="container mx-auto py-20 px-4 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div>
-            <motion.img
+            <motion.div
               ref={ref}
               initial={{ opacity: 0, scale: 0.8 }}
               animate={inView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.8 }}
-              src="/prof2.png"
-              alt="Profile"
-              className="rounded-lg shadow-xl"
-            />
+            >
+              <Image
+                src="/prof2.png"
+                alt="Profile"
+                width={500}
+                height={500}
+                className="rounded-lg shadow-xl"
+              />
+            </motion.div>
           </div>
           <div>
             <animated.h2 style={titleAnimation} className="text-4xl font-bold mb-4">
@@ -201,7 +222,13 @@ export default function Home() {
           {projectsData.map((project, index) => (
             <div key={index} className="px-4">
               <div className="bg-white rounded-lg shadow-xl overflow-hidden">
-                <img src={project.image} alt={project.title} className="w-full h-80 object-cover" />
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  width={800}
+                  height={500}
+                  className="w-full h-80 object-cover"
+                />
                 <div className="p-6">
                   <h3 className="text-2xl font-bold mb-2 text-gray-800">{project.title}</h3>
                   <p className="text-gray-600 mb-4">{project.description}</p>
