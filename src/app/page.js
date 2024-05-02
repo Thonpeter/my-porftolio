@@ -94,7 +94,7 @@ export default function Home() {
   };
 
   return (
-    <div className={`${isDarkMode ? 'dark' : ''}`}>
+    <div className={`bg-white dark:bg-gray-900 min-h-screen relative ${isDarkMode ? 'dark' : ''}`}>
       <div className="bg-white dark:bg-gray-900 min-h-screen relative">
         <ParticleBackground />
 
