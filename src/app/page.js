@@ -214,7 +214,7 @@ export default function Home() {
                 About Me
               </animated.h2>
               <p className="text-xl mb-6 text-gray-800 dark:text-white">
-                Full stack developer with expertise in blockchain technology and smart contract development, creating innovative decentralized applications. Passionate about leveraging the power of blockchain to build secure, transparent, and efficient solutions.
+                Iam a full stack developer with expertise in blockchain technology and smart contract development, creating innovative decentralized applications. Passionate about leveraging the power of blockchain to build secure, transparent, and efficient solutions.
               </p>
               <div className="flex flex-wrap gap-6 mb-12">
                 <a
