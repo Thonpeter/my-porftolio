@@ -94,8 +94,8 @@ export default function Home() {
   };
 
   return (
-    <div className={`bg-white dark:bg-gray-900 min-h-screen relative ${isDarkMode ? 'dark' : ''}`}>
-      <div className="bg-white dark:bg-gray-900 min-h-screen relative">
+    <div className={`${isDarkMode ? 'dark' : ''}`}>
+      <div className="bg-gradient-to-r from-gray-100 to-white dark:from-gray-900 dark:to-slate-900 min-h-screen text-gray-800 dark:text-white relative">
         <ParticleBackground />
 
         {/* Navigation Bar */}
