@@ -267,35 +267,42 @@ export default function Home() {
                   className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md"
                 >
                   {/* Timeline content */}
-                  <ul className="timeline">
+                  <ul className="timeline space-y-8">
                     <li className="timeline-item">
-                      <div className="timeline-item-content">
-                        <span className="timeline-item-date">2018 - 2020</span>
-                        <h4 className="timeline-item-title">Full Stack Developer</h4>
-                        <p className="timeline-item-description">
-                          Worked as a full stack developer at XYZ Company, building web applications using modern technologies.
+                      <div className="timeline-item-content bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                        <span className="timeline-item-date text-gray-500 dark:text-gray-400 text-sm mb-2">2018 - 2020</span>
+                        <h4 className="timeline-item-title text-xl font-bold mb-2">Full Stack Developer</h4>
+                        <p className="timeline-item-description text-gray-600 dark:text-gray-300">
+                          Developed and maintained responsive web applications using modern technologies such as React, Node.js, and MongoDB.
+                          Collaborated with cross-functional teams to deliver high-quality software solutions.
+                          Implemented RESTful APIs and integrated third-party services to enhance application functionality.
                         </p>
                       </div>
                     </li>
                     <li className="timeline-item">
-                      <div className="timeline-item-content">
-                        <span className="timeline-item-date">2020 - 2022</span>
-                        <h4 className="timeline-item-title">Blockchain Developer</h4>
-                        <p className="timeline-item-description">
-                          Transitioned to blockchain development, focusing on Ethereum and smart contract development.
+                      <div className="timeline-item-content bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                        <span className="timeline-item-date text-gray-500 dark:text-gray-400 text-sm mb-2">2020 - 2022</span>
+                        <h4 className="timeline-item-title text-xl font-bold mb-2">Blockchain Developer</h4>
+                        <p className="timeline-item-description text-gray-600 dark:text-gray-300">
+                          Transitioned to blockchain development, specializing in Ethereum and smart contract development using Solidity.
+                          Designed and implemented secure and gas-efficient smart contracts for various decentralized applications (DApps).
+                          Contributed to the development of a decentralized exchange (DEX) and a yield farming platform.
                         </p>
                       </div>
                     </li>
                     <li className="timeline-item">
-                      <div className="timeline-item-content">
-                        <span className="timeline-item-date">2022 - Present</span>
-                        <h4 className="timeline-item-title">Senior Blockchain Developer</h4>
-                        <p className="timeline-item-description">
-                          Currently working as a senior blockchain developer, leading the development of decentralized applications.
+                      <div className="timeline-item-content bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                        <span className="timeline-item-date text-gray-500 dark:text-gray-400 text-sm mb-2">2022 - Present</span>
+                        <h4 className="timeline-item-title text-xl font-bold mb-2">Senior Blockchain Developer</h4>
+                        <p className="timeline-item-description text-gray-600 dark:text-gray-300">
+                          Leading the development of cutting-edge decentralized applications and blockchain solutions.
+                          Architecting and implementing scalable and secure smart contract systems for enterprise clients.
+                          Mentoring junior developers and promoting best practices in blockchain development.
+                          Contributing to open-source blockchain projects and actively participating in the blockchain community.
                         </p>
                       </div>
                     </li>
-                  </ul>
+                </ul>
                 </motion.div>
               )}
             </AnimatePresence>
