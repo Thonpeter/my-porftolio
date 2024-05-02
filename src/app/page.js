@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState } from 'react';
 import Typed from 'typed.js';
-import { FaGithub, FaLinkedin, FaTwitter, FaCode, FaPalette, FaRocket } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaTwitter, FaCode, FaPalette, FaRocket, FaFacebook } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Carousel } from 'react-responsive-carousel';
@@ -402,20 +402,46 @@ export default function Home() {
         </section>
 
         {/* Footer */}
-        <footer className="bg-gray-800 dark:bg-gray-900 py-8 relative z-10">
-          <div className="container mx-auto px-4 text-center">
-            <p className="text-lg text-white">&copy; {new Date().getFullYear()} Thon Peter Mawut. All rights reserved.</p>
-            <div className="mt-4 flex justify-center space-x-4">
-              <a href="https://github.com/Thonpeter" target="_blank" rel="noopener noreferrer">
-                <FaGithub className="text-white hover:text-indigo-400 transition-colors duration-300" size={24} />
-              </a>
-              <a href="https://www.linkedin.com/in/thon-peter-mawut-3a0a44186/" target="_blank" rel="noopener noreferrer">
-                <FaLinkedin className="text-white hover:text-indigo-400 transition-colors duration-300" size={24} />
-              </a>
-              <a href="https://twitter.com/your-twitter-handle" target="_blank" rel="noopener noreferrer">
-                <FaTwitter className="text-white hover:text-indigo-400 transition-colors duration-300" size={24} />
-              </a>
+        <footer className="bg-gray-800 dark:bg-gray-900 py-12 relative z-10">
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div>
+                <h3 className="text-xl text-white font-bold mb-4">About Me</h3>
+                <p className="text-gray-400">
+                  I'm a passionate blockchain developer with expertise in creating innovative decentralized applications and solutions.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-xl text-white font-bold mb-4">Contact Information</h3>
+                <p className="text-gray-400">
+                  Email: <a href="mailto:thonawangjr@gmail.com" className="text-indigo-400 hover:text-indigo-300">thonawangjr@gmail.com</a>
+                </p>
+                <p className="text-gray-400">
+                  Phone: <a href="tel:+254712577585" className="text-indigo-400 hover:text-indigo-300">+254 712 577 585</a>
+                </p>
+              </div>
+              <div>
+                <h3 className="text-xl text-white font-bold mb-4">Connect with Me</h3>
+                <div className="flex space-x-4">
+                  <a href="https://github.com/Thonpeter" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-indigo-400 transition-colors duration-300">
+                    <FaGithub size={24} />
+                  </a>
+                  <a href="https://www.linkedin.com/in/thon-peter-mawut/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-indigo-400 transition-colors duration-300">
+                    <FaLinkedin size={24} />
+                  </a>
+                  <a href="https://twitter.com/Thon_Awang_jr" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-indigo-400 transition-colors duration-300">
+                    <FaTwitter size={24} />
+                  </a>
+                  <a href="https://www.facebook.com/thon.awang.jr" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-indigo-400 transition-colors duration-300">
+                    <FaFacebook size={24} />
+                  </a>
+                </div>
+              </div>
             </div>
+            <hr className="my-8 border-gray-700" />
+            <p className="text-center text-gray-400">
+              &copy; {new Date().getFullYear()} Thon Peter Mawut. All rights reserved.
+            </p>
           </div>
         </footer>
 
