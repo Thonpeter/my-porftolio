@@ -218,7 +218,9 @@ export default function Home() {
               </p>
               <div className="flex flex-wrap gap-6 mb-12">
                 <a
-                  href="#"
+                  href="/Resume-2024.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-4 rounded-full font-semibold shadow-md"
                 >
                   Download Resume
