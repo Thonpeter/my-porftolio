@@ -114,7 +114,7 @@ export default function Home() {
           transition={{ duration: 0.8 }}
           className="text-4xl sm:text-6xl font-bold mb-6"
         >
-          Welcome to My Portfolio
+          Explore My Innovative World
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 50 }}
