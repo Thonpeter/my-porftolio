@@ -406,9 +406,9 @@ export default function Home() {
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div>
-                <h3 className="text-xl text-white font-bold mb-4">About Me</h3>
+                <h3 className="text-xl text-white font-bold mb-4">Favourite quote</h3>
                 <p className="text-gray-400">
-                  I'm a passionate blockchain developer with expertise in creating innovative decentralized applications and solutions.
+                "Talk is cheap. Show me the code". - Linus Torvalds
                 </p>
               </div>
               <div>
