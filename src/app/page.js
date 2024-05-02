@@ -23,13 +23,13 @@ export default function Home() {
     {
       title: 'Decentralized Finance App',
       description: 'A cutting-edge DeFi application built on Ethereum, enabling users to lend, borrow, and trade cryptocurrency assets securely.',
-      image: '/project1.jpg',
+      image: '/project1.jpeg',
       link: '#',
     },
     {
       title: 'NFT Marketplace',
       description: 'A decentralized marketplace for creating, buying, and selling unique digital assets as Non-Fungible Tokens (NFTs) on the blockchain.',
-      image: '/project2.jpg',
+      image: '/project2.jpeg',
       link: '#',
     },
     {
