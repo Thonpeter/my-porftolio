@@ -2,21 +2,12 @@
 
 import { useEffect, useRef } from 'react';
 import Typed from 'typed.js';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaEnvelope, FaPhone, FaDownload } from 'react-icons/fa';
 import Image from 'next/image';
 
 export default function Hero() {
   const typedRef = useRef<HTMLSpanElement>(null);
-  const sectionRef = useRef<HTMLElement>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start start', 'end start'],
-  });
-
-  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1, 0]);
-  const y = useTransform(scrollYProgress, [0, 0.5, 1], [0, -50, -100]);
 
   useEffect(() => {
     if (!typedRef.current) return;
@@ -48,10 +39,8 @@ export default function Hero() {
   ];
 
   return (
-    <motion.section
-      ref={sectionRef}
+    <section
       id="home"
-      style={{ opacity, y }}
       className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-20 md:pt-24"
     >
       <div className="container mx-auto max-w-6xl">
@@ -192,6 +181,6 @@ export default function Hero() {
           </motion.div>
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 }

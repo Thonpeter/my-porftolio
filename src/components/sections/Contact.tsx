@@ -2,7 +2,7 @@
 
 import { useState, useRef } from 'react';
 import { useInView } from 'react-intersection-observer';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -52,19 +52,10 @@ export default function Contact() {
   const sectionRef = useRef<HTMLElement>(null);
   const [ref, inView] = useInView({
     threshold: 0.1,
-    triggerOnce: false,
+    triggerOnce: true,
   });
   const { register, handleSubmit, reset, formState: { errors } } = useForm<ContactFormData>();
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start 0.98', 'end 0.02'],
-  });
-
-  // Content stays fully visible almost the entire time, only subtle fade at very edges
-  const opacity = useTransform(scrollYProgress, [0, 0.02, 0.98, 1], [0, 1, 1, 0]);
-  const y = useTransform(scrollYProgress, [0, 0.02, 0.98, 1], [30, 0, 0, -30]);
 
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
@@ -108,10 +99,9 @@ export default function Contact() {
     <motion.section
       ref={sectionRef}
       id="contact"
-      style={{ 
-        opacity: inView ? 1 : opacity,
-        y: inView ? 0 : y 
-      }}
+      initial={{ opacity: 0, y: 50 }}
+      animate={inView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
       className="py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent via-white/30 to-transparent dark:via-gray-900/30"
     >
       <div className="container mx-auto max-w-6xl">
