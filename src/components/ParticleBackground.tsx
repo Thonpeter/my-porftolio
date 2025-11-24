@@ -1,16 +1,20 @@
 'use client';
 
-import { useCallback, useMemo } from 'react';
-import Particles from 'react-particles';
-// @ts-ignore - tsparticles-slim doesn't have types
-import { loadSlim } from 'tsparticles-slim';
+import { useCallback, useMemo, useEffect, useState } from 'react';
+import Particles, { initParticlesEngine } from '@tsparticles/react';
+import { loadSlim } from '@tsparticles/slim';
 import { useTheme } from '@/contexts/ThemeContext';
 
 export default function ParticleBackground() {
   const { theme } = useTheme();
+  const [init, setInit] = useState(false);
 
-  const particlesInit = useCallback(async (engine: any) => {
-    await loadSlim(engine);
+  useEffect(() => {
+    initParticlesEngine(async (engine) => {
+      await loadSlim(engine);
+    }).then(() => {
+      setInit(true);
+    });
   }, []);
 
   const particleColor = useMemo(() => {
@@ -28,13 +32,15 @@ export default function ParticleBackground() {
       events: {
         onClick: {
           enable: true,
-          mode: 'push',
+          mode: 'push' as const,
         },
         onHover: {
           enable: true,
-          mode: 'repulse',
+          mode: 'repulse' as const,
         },
-        resize: true,
+        resize: {
+          enable: true,
+        },
       },
       modes: {
         push: {
@@ -58,9 +64,9 @@ export default function ParticleBackground() {
         width: 1,
       },
       move: {
-        direction: 'none',
+        direction: 'none' as const,
         enable: true,
-        out_mode: 'bounce',
+        outModes: 'bounce' as const,
         random: false,
         speed: 2,
         straight: false,
@@ -89,11 +95,14 @@ export default function ParticleBackground() {
     detectRetina: true,
   }), [particleColor]);
 
+  if (!init) {
+    return null;
+  }
+
   return (
     <Particles
       id="tsparticles"
-      init={particlesInit}
-      className="absolute inset-0 z-0"
+      className="absolute inset-0 z-0 pointer-events-none"
       options={options}
       key={theme} // Force re-render when theme changes
     />
