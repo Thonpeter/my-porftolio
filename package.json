@@ -1,6 +1,6 @@
 {
-  "name": "port",
-  "version": "0.1.0",
+  "name": "thon-peter-portfolio",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,26 +9,31 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.19",
+    "@headlessui/react": "^2.1.0",
     "framer-motion": "^11.1.7",
-    "next": "14.2.3",
+    "next": "^15.0.0",
     "nodemailer": "^6.9.13",
-    "particles-bg": "^2.5.5",
-    "react": "^18",
-    "react-dom": "^18",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-hook-form": "^7.51.3",
     "react-icons": "^5.2.0",
     "react-intersection-observer": "^9.10.1",
     "react-particles": "^2.12.2",
-    "react-responsive-carousel": "^3.2.23",
-    "react-spring": "^9.7.3",
     "react-toastify": "^10.0.5",
+    "tsparticles": "^2.12.0",
+    "tsparticles-slim": "^2.12.0",
     "typed.js": "^2.1.0"
   },
   "devDependencies": {
+    "@types/node": "^20",
+    "@types/nodemailer": "^6.4.14",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@types/typed.js": "^2.0.0",
     "eslint": "^8",
-    "eslint-config-next": "14.2.3",
+    "eslint-config-next": "^15.0.0",
     "postcss": "^8",
-    "tailwindcss": "^3.4.1"
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
   }
 }
