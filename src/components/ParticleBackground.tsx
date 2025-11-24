@@ -64,7 +64,6 @@ export default function ParticleBackground() {
         width: 1,
       },
       move: {
-        direction: 'none' as const,
         enable: true,
         outModes: 'bounce' as const,
         random: false,
