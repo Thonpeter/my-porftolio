@@ -3,7 +3,7 @@
 import { useInView } from 'react-intersection-observer';
 import { motion } from 'framer-motion';
 import { useRef } from 'react';
-import { FaGithub, FaExternalLinkAlt, FaVoteYea, FaSearch, FaSchool, FaCode, FaDatabase, FaUsers } from 'react-icons/fa';
+import { FaGithub, FaExternalLinkAlt, FaVoteYea, FaSearch, FaSchool, FaCode, FaDatabase, FaUsers, FaGraduationCap } from 'react-icons/fa';
 import { SiSolidity, SiReact, SiNextdotjs, SiNodedotjs, SiMongodb } from 'react-icons/si';
 
 interface Project {
@@ -64,6 +64,20 @@ const projects: Project[] = [
     features: ['Program Information', 'Student Resources', 'News Updates', 'Contact Forms'],
     repoName: 'amonto',
   },
+  {
+    id: 4,
+    name: 'nec-hub',
+    title: 'South Sudan National Exams Hub',
+    description: 'A modern, elegant web platform for hosting South Sudan National Exams resources including subject notes, past papers, and study materials.',
+    longDescription: 'A modern, elegant web platform for hosting South Sudan National Exams resources including subject notes, past papers, and study materials. Built with beautiful UI components, smooth animations, and a focus on user experience. Features include resource browsing, downloads, bookmarks, student dashboard, and admin tools.',
+    github: 'https://github.com/Thonpeter/nec',
+    demo: 'https://github.com/Thonpeter/nec',
+    technologies: ['Next.js 16', 'React 19', 'TypeScript', 'Tailwind CSS 4', 'MongoDB'],
+    icon: FaGraduationCap,
+    gradient: 'from-blue-600 via-indigo-600 to-violet-600',
+    features: ['Resource Repository', 'Student Dashboard', 'Admin Management', 'Dark Mode Support'],
+    repoName: 'nec',
+  },
 ];
 
 export default function Projects() {
@@ -113,13 +127,13 @@ export default function Projects() {
                 <div className="relative h-full glass rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-200 dark:border-gray-700/50 hover:border-indigo-300 dark:hover:border-indigo-600">
                   {/* Animated Gradient Header */}
                   <div className={`relative h-56 bg-gradient-to-br ${project.gradient} p-8 flex items-center justify-center overflow-hidden`}>
-                    <div 
+                    <div
                       className="absolute inset-0 opacity-20"
                       style={{
                         backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
                       }}
                     />
-                    
+
                     {/* Large Icon */}
                     <div className="relative z-10">
                       <div className="w-28 h-28 bg-white/20 backdrop-blur-md rounded-3xl flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-2xl border border-white/30">

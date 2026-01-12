@@ -3,7 +3,7 @@
 import { useInView } from 'react-intersection-observer';
 import { motion } from 'framer-motion';
 import { useRef } from 'react';
-import { FaGraduationCap, FaDatabase, FaChalkboardTeacher } from 'react-icons/fa';
+import { FaGraduationCap, FaDatabase, FaChalkboardTeacher, FaChartLine } from 'react-icons/fa';
 
 const experiences = [
   {
@@ -30,6 +30,20 @@ const experiences = [
       'Managed and maintained refugee registration database systems',
       'Processed and verified data for 500+ refugee records',
       'Assisted in generating reports for government agencies',
+    ],
+  },
+  {
+    title: 'Data Systems Assistant',
+    company: 'World Vision Uganda',
+    location: 'Adjumani, Uganda',
+    period: '2021 – 2022',
+    icon: FaChartLine,
+    color: 'from-blue-500 to-cyan-500',
+    responsibilities: [
+      'Served as a data collector using Kobo Collect/ODK for refugee assessment projects, collecting and processing over 10,000 data points from refugee households with high accuracy',
+      'Implemented mobile data collection tools (ODK/Kobo Toolbox) and provided end-user training to field staff',
+      'Managed system backups, data security protocols, and disaster recovery procedures, ensuring zero data loss',
+      'Generated analytical reports using Power BI, Excel, and SQL for program monitoring and decision making',
     ],
   },
 ];

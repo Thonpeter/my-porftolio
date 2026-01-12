@@ -15,6 +15,7 @@ export default function Hero() {
     const typed = new Typed(typedRef.current, {
       strings: [
         'Computer Science Teacher',
+        'Software Engineer',
         'Full Stack Developer',
         'Data Analyst',
         'Blockchain Developer',
@@ -162,7 +163,7 @@ export default function Hero() {
               {/* Animated gradient rings */}
               <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 rounded-full blur-3xl opacity-40 animate-pulse" />
               <div className="absolute inset-[-20px] bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 rounded-full blur-2xl opacity-20" />
-              
+
               {/* Profile image container - circular */}
               <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-indigo-600 dark:border-indigo-400 shadow-2xl">
                 <Image
@@ -173,7 +174,7 @@ export default function Hero() {
                   priority
                 />
               </div>
-              
+
               {/* Floating decorative elements */}
               <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-indigo-400 to-purple-500 rounded-full blur-xl opacity-30" />
               <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-br from-pink-400 to-indigo-500 rounded-full blur-xl opacity-20" />
