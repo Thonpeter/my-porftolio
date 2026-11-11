@@ -1,93 +1,140 @@
-'use client';
-
-import { FaGithub, FaLinkedin, FaEnvelope, FaHeart } from 'react-icons/fa';
-
-const currentYear = new Date().getFullYear();
+import Link from 'next/link';
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 dark:from-black dark:via-gray-950 dark:to-black text-gray-300 py-12 px-4 sm:px-6 lg:px-8 border-t border-gray-800/50">
-      <div className="container mx-auto max-w-6xl">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-          <div>
-            <h3 className="text-xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent mb-4">Thon Peter Mawut</h3>
-            <p className="text-gray-400 mb-4">
-              Computer Science Teacher • Full Stack Developer • Data Analyst
+    <footer className="border-t border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-950 py-16 px-6">
+      <div className="max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-neutral-200/80 dark:border-neutral-800/80">
+          {/* Identity & Current Availability */}
+          <div className="md:col-span-5 space-y-3">
+            <Link
+              href="/"
+              className="text-base font-semibold tracking-tight text-neutral-900 dark:text-neutral-100 hover:text-neutral-600 dark:hover:text-neutral-400 transition-colors"
+            >
+              Thon Peter Mawut
+            </Link>
+            <p className="text-sm text-neutral-500 leading-relaxed">
+              Software Engineer & Computer Science Educator based in Juba, South Sudan. Focused on resilient web architecture, data systems, and developer mentorship.
             </p>
-            <p className="text-sm text-gray-500">
-              &quot;Talk is cheap. Show me the code.&quot; - Linus Torvalds
-            </p>
+            <div className="pt-2 flex items-center gap-2 text-xs font-mono text-neutral-600 dark:text-neutral-400">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span>Available for select projects & collaborations</span>
+            </div>
           </div>
 
-          <div>
-            <h3 className="text-xl font-bold text-white mb-4">Quick Links</h3>
-            <ul className="space-y-2">
+          {/* Site Navigation */}
+          <div className="md:col-span-3 space-y-3">
+            <span className="block text-xs font-mono uppercase tracking-wider text-neutral-400">
+              Navigation
+            </span>
+            <ul className="space-y-2 text-sm">
               <li>
-                <a href="#home" className="hover:text-indigo-400 transition-colors duration-200 hover:translate-x-1 inline-block">
-                  Home
-                </a>
+                <Link
+                  href="/#about"
+                  className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
+                >
+                  About & Background
+                </Link>
               </li>
               <li>
-                <a href="#about" className="hover:text-indigo-400 transition-colors duration-200 hover:translate-x-1 inline-block">
-                  About
-                </a>
+                <Link
+                  href="/#projects"
+                  className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
+                >
+                  Selected Work
+                </Link>
               </li>
               <li>
-                <a href="#projects" className="hover:text-indigo-400 transition-colors duration-200 hover:translate-x-1 inline-block">
-                  Projects
-                </a>
+                <Link
+                  href="/#experience"
+                  className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
+                >
+                  Work Dossier
+                </Link>
               </li>
               <li>
-                <a href="#contact" className="hover:text-indigo-400 transition-colors duration-200 hover:translate-x-1 inline-block">
-                  Contact
-                </a>
+                <Link
+                  href="/blog"
+                  className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
+                >
+                  Writing & Thoughts
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/#contact"
+                  className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
+                >
+                  Get in Touch
+                </Link>
               </li>
             </ul>
           </div>
 
-          <div>
-            <h3 className="text-xl font-bold text-white mb-4">Connect</h3>
-            <div className="flex gap-4 mb-4">
-              <a
-                href="https://github.com/Thonpeter"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-12 h-12 flex items-center justify-center bg-gray-800/50 hover:bg-gradient-to-br hover:from-indigo-600 hover:to-purple-600 rounded-xl transition-all duration-300 hover:scale-110 hover:shadow-lg border border-gray-700/50 hover:border-indigo-500"
-                aria-label="GitHub"
-              >
-                <FaGithub size={20} />
-              </a>
-              <a
-                href="https://linkedin.com/in/thon-peter"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-12 h-12 flex items-center justify-center bg-gray-800/50 hover:bg-gradient-to-br hover:from-indigo-600 hover:to-purple-600 rounded-xl transition-all duration-300 hover:scale-110 hover:shadow-lg border border-gray-700/50 hover:border-indigo-500"
-                aria-label="LinkedIn"
-              >
-                <FaLinkedin size={20} />
-              </a>
-              <a
-                href="mailto:thonawangjr@gmail.com"
-                className="w-12 h-12 flex items-center justify-center bg-gray-800/50 hover:bg-gradient-to-br hover:from-indigo-600 hover:to-purple-600 rounded-xl transition-all duration-300 hover:scale-110 hover:shadow-lg border border-gray-700/50 hover:border-indigo-500"
-                aria-label="Email"
-              >
-                <FaEnvelope size={20} />
-              </a>
-            </div>
-            <p className="text-sm text-gray-500">
-              Juba, South Sudan
-            </p>
+          {/* Elsewhere / Channels */}
+          <div className="md:col-span-4 space-y-3">
+            <span className="block text-xs font-mono uppercase tracking-wider text-neutral-400">
+              Elsewhere
+            </span>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <a
+                  href="https://github.com/Thonpeter"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors flex items-center justify-between"
+                >
+                  <span>GitHub</span>
+                  <span className="text-xs font-mono text-neutral-400">@Thonpeter</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://linkedin.com/in/thon-peter"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors flex items-center justify-between"
+                >
+                  <span>LinkedIn</span>
+                  <span className="text-xs font-mono text-neutral-400">/in/thon-peter</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="mailto:thonawangjr@gmail.com"
+                  className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors flex items-center justify-between"
+                >
+                  <span>Email</span>
+                  <span className="text-xs font-mono text-neutral-400">thonawangjr@gmail.com</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/Resume-2024.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors flex items-center justify-between"
+                >
+                  <span>Curriculum Vitae</span>
+                  <span className="text-xs font-mono text-neutral-400">PDF</span>
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
 
-        <div className="border-t border-gray-800 pt-8 text-center">
-          <p className="text-gray-500 flex items-center justify-center gap-2">
-            &copy; {currentYear} Thon Peter Mawut. Made with{' '}
-            <FaHeart className="text-red-500" size={16} /> using Next.js
-          </p>
+        {/* Bottom Colophon */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500 font-mono">
+          <div>
+            Built with Next.js, TypeScript & Tailwind CSS. Zero AI bloat.
+          </div>
+          <div>
+            © {currentYear} Thon Peter Mawut.
+          </div>
         </div>
       </div>
     </footer>
   );
 }
-

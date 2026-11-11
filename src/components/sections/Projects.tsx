@@ -1,228 +1,211 @@
 'use client';
 
-import { useInView } from 'react-intersection-observer';
-import { motion } from 'framer-motion';
-import { useRef } from 'react';
-import { FaGithub, FaExternalLinkAlt, FaVoteYea, FaSearch, FaSchool, FaCode, FaDatabase, FaUsers, FaGraduationCap } from 'react-icons/fa';
-import { SiSolidity, SiReact, SiNextdotjs, SiNodedotjs, SiMongodb } from 'react-icons/si';
+import { useState } from 'react';
+import { FaGithub, FaExternalLinkAlt, FaChevronDown } from 'react-icons/fa';
 
 interface Project {
-  id: number;
-  name: string;
+  year: string;
   title: string;
-  description: string;
-  longDescription: string;
-  github: string;
-  demo: string;
-  technologies: string[];
-  icon: React.ComponentType<{ className?: string; size?: number }>;
-  gradient: string;
-  features: string[];
-  repoName: string;
+  summary: string;
+  architecture: {
+    problem: string;
+    decision: string;
+    impact: string;
+  };
+  metrics?: string[];
+  github?: string;
+  demo?: string;
+  tags: string[];
 }
 
 const projects: Project[] = [
   {
-    id: 1,
-    name: 'blockchain-voting',
-    title: 'Decentralized Voting System',
-    description: 'A secure blockchain-based voting platform ensuring transparency and immutability in electoral processes.',
-    longDescription: 'Developed a comprehensive decentralized voting application using blockchain technology. Implemented smart contracts for secure vote recording and tallying, ensuring transparency, immutability, and eliminating electoral fraud. Features include voter authentication, real-time vote tracking, and tamper-proof results.',
-    github: 'https://github.com/Thonpeter/Blockchain-Voting-System',
-    demo: 'https://github.com/Thonpeter/Blockchain-Voting-System',
-    technologies: ['Solidity', 'React', 'Node.js', 'Web3', 'Ethers.js'],
-    icon: FaVoteYea,
-    gradient: 'from-cyan-500 via-blue-500 to-indigo-600',
-    features: ['Smart Contracts', 'Voter Authentication', 'Real-time Tracking', 'Tamper-proof Results'],
-    repoName: 'Blockchain-Voting-System',
-  },
-  {
-    id: 2,
-    name: 'lost-found',
-    title: 'Lost & Found Platform for South Sudan',
-    description: 'A community-driven platform connecting lost items with their owners across South Sudan.',
-    longDescription: 'Built a comprehensive lost and found system specifically designed for South Sudan communities. Enables users to report lost items, search for found items, and connect with community members. Features include image uploads, location-based search, category filtering, and secure messaging between users.',
-    github: 'https://github.com/Thonpeter/lost-and-found-south-sudan',
-    demo: 'https://lostnfound-10hbg7kzf-thons-projects-d3ecb359.vercel.app/',
-    technologies: ['Next.js', 'React', 'MongoDB', 'Node.js', 'Tailwind CSS'],
-    icon: FaSearch,
-    gradient: 'from-green-500 via-emerald-500 to-teal-600',
-    features: ['Image Upload', 'Location Search', 'Category Filtering', 'Secure Messaging'],
-    repoName: 'lost-and-found-south-sudan',
-  },
-  {
-    id: 3,
-    name: 'amonto',
-    title: 'Amonto Girls Academy Website',
-    description: 'Official website for Amonto Girls Academy, showcasing the school\'s mission, programs, and achievements.',
-    longDescription: 'Developed a modern, responsive website for Amonto Girls Academy Secondary School. Features include program information, student resources, news updates, and contact information. Built with a focus on accessibility, performance, and user experience to effectively represent the school\'s mission and values.',
-    github: 'https://github.com/Thonpeter/amonto',
-    demo: 'https://www.amontogirls.com',
-    technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'],
-    icon: FaSchool,
-    gradient: 'from-purple-500 via-pink-500 to-rose-600',
-    features: ['Program Information', 'Student Resources', 'News Updates', 'Contact Forms'],
-    repoName: 'amonto',
-  },
-  {
-    id: 4,
-    name: 'nec-hub',
+    year: '2025',
     title: 'South Sudan National Exams Hub',
-    description: 'A modern, elegant web platform for hosting South Sudan National Exams resources including subject notes, past papers, and study materials.',
-    longDescription: 'A modern, elegant web platform for hosting South Sudan National Exams resources including subject notes, past papers, and study materials. Built with beautiful UI components, smooth animations, and a focus on user experience. Features include resource browsing, downloads, bookmarks, student dashboard, and admin tools.',
+    summary: 'A unified digital archive and study hub for South Sudan Certificate of Secondary Education past papers and syllabus notes.',
+    architecture: {
+      problem: 'Students in regional schools face severe scarcity of syllabus-aligned past papers and curriculum guides.',
+      decision: 'Chose Next.js with SSG and MongoDB caching layer to ensure fast page loads over constrained 3G mobile connections.',
+      impact: 'Centralized multi-year examination papers into an accessible zero-bloat repository.',
+    },
+    metrics: ['Sub-second page loads', 'Accessible on low-bandwidth mobile', 'Indexed by subject & year'],
     github: 'https://github.com/Thonpeter/nec',
     demo: 'https://github.com/Thonpeter/nec',
-    technologies: ['Next.js 16', 'React 19', 'TypeScript', 'Tailwind CSS 4', 'MongoDB'],
-    icon: FaGraduationCap,
-    gradient: 'from-blue-600 via-indigo-600 to-violet-600',
-    features: ['Resource Repository', 'Student Dashboard', 'Admin Management', 'Dark Mode Support'],
-    repoName: 'nec',
+    tags: ['Next.js', 'React', 'TypeScript', 'MongoDB'],
+  },
+  {
+    year: '2025',
+    title: 'Lost & Found Platform for South Sudan',
+    summary: 'A community credential and property recovery registry built specifically for citizens across South Sudan.',
+    architecture: {
+      problem: 'Recovering lost national IDs, academic certificates, and personal documents relied on unstructured social media posts.',
+      decision: 'Designed a lightweight, category-indexed database with strict search filters and location-based discovery.',
+      impact: 'Replaced scattered chat channels with a searchable, permanent recovery registry.',
+    },
+    metrics: ['Instant keyword search', 'Categorized document recovery', 'Mobile-first design'],
+    github: 'https://github.com/Thonpeter/lost-and-found-south-sudan',
+    demo: 'https://lostnfound-10hbg7kzf-thons-projects-d3ecb359.vercel.app/',
+    tags: ['Next.js', 'MongoDB', 'Tailwind CSS'],
+  },
+  {
+    year: '2024',
+    title: 'Amonto Girls Academy Platform',
+    summary: 'Official digital portal for an all-girls secondary institution, supporting admissions, academic calendars, and school visibility.',
+    architecture: {
+      problem: 'The institution needed an authoritative web presence to attract prospective students and communicate curriculum standards.',
+      decision: 'Built an editorial, typography-first static platform with zero third-party tracking scripts to maximize speed and privacy.',
+      impact: 'Established the school’s digital foundation and direct public contact channel.',
+    },
+    metrics: ['100% Lighthouse SEO score', 'Zero tracking overhead', 'Mobile responsive'],
+    github: 'https://github.com/Thonpeter/amonto',
+    demo: 'https://www.amontogirls.com',
+    tags: ['Next.js', 'TypeScript', 'Tailwind CSS'],
+  },
+  {
+    year: '2024',
+    title: 'Decentralized Voting System',
+    summary: 'Undergraduate thesis project: an immutable cryptographic voting architecture eliminating voter manipulation.',
+    architecture: {
+      problem: 'Traditional electronic and paper ballots risk central authority tampering and lack verifiable audit trails.',
+      decision: 'Utilized Solidity smart contracts on EVM to enforce one-voter-one-vote mechanics with cryptographic immutability.',
+      impact: 'Demonstrated verifiable tally integrity without reliance on a single central server.',
+    },
+    metrics: ['Tamper-evident ledger', 'Smart contract verified', 'Undergraduate Thesis'],
+    github: 'https://github.com/Thonpeter/Blockchain-Voting-System',
+    tags: ['Solidity', 'Web3', 'React', 'Node.js'],
   },
 ];
 
 export default function Projects() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const [ref, inView] = useInView({
-    threshold: 0.1,
-    triggerOnce: true,
-  });
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+
+  const toggleExpand = (index: number) => {
+    setExpandedIndex(expandedIndex === index ? null : index);
+  };
 
   return (
-    <motion.section
-      ref={sectionRef}
-      id="projects"
-      initial={{ opacity: 0, y: 50 }}
-      animate={inView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-      className="py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent via-white/30 to-transparent dark:via-gray-900/30"
-    >
-      <div className="container mx-auto max-w-7xl">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-extrabold mb-4 gradient-text">
-            Featured Projects
+    <section id="projects" className="py-20 px-6 max-w-5xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div className="md:col-span-1">
+          <span className="text-xs font-mono uppercase tracking-widest text-neutral-400">
+            Portfolio
+          </span>
+          <h2 className="text-2xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100 mt-1">
+            Selected Work
           </h2>
-          <div className="section-divider mb-6" />
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            Showcasing innovative solutions that make a real impact
+          <p className="mt-3 text-sm text-neutral-500 leading-relaxed">
+            Click any project to inspect architectural decisions, problem constraints, and measurable impact.
           </p>
-        </motion.div>
+        </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="md:col-span-2 divide-y divide-neutral-200 dark:divide-neutral-800">
           {projects.map((project, index) => {
-            const Icon = project.icon;
+            const isExpanded = expandedIndex === index;
             return (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, y: 50 }}
-                animate={inView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="group relative"
-              >
-                <div className="relative h-full glass rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-200 dark:border-gray-700/50 hover:border-indigo-300 dark:hover:border-indigo-600">
-                  {/* Animated Gradient Header */}
-                  <div className={`relative h-56 bg-gradient-to-br ${project.gradient} p-8 flex items-center justify-center overflow-hidden`}>
-                    <div
-                      className="absolute inset-0 opacity-20"
-                      style={{
-                        backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-                      }}
-                    />
-
-                    {/* Large Icon */}
-                    <div className="relative z-10">
-                      <div className="w-28 h-28 bg-white/20 backdrop-blur-md rounded-3xl flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-2xl border border-white/30">
-                        <Icon className="text-white drop-shadow-lg" size={56} />
-                      </div>
+              <article key={project.title} className="py-6 first:pt-0 last:pb-0">
+                <div className="flex items-start justify-between gap-4">
+                  <button
+                    onClick={() => toggleExpand(index)}
+                    className="text-left group flex-1 focus:outline-none"
+                    aria-expanded={isExpanded}
+                  >
+                    <div className="flex items-center gap-3">
+                      <span className="text-xs font-mono tabular-nums text-neutral-400">
+                        {project.year}
+                      </span>
+                      <h3 className="text-base font-medium text-neutral-900 dark:text-neutral-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors flex items-center gap-2">
+                        <span>{project.title}</span>
+                        <FaChevronDown
+                          size={11}
+                          className={`text-neutral-400 transform transition-transform duration-200 ${
+                            isExpanded ? 'rotate-180' : ''
+                          }`}
+                        />
+                      </h3>
                     </div>
-
-                    {/* Floating Code Elements */}
-                    <div className="absolute top-4 left-4 text-white/40 font-mono text-xs font-semibold">
-                      {'<project>'}
-                    </div>
-                    <div className="absolute bottom-4 right-4 text-white/40 font-mono text-xs font-semibold">
-                      {'</project>'}
-                    </div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="p-6">
-                    <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-3">
-                      {project.title}
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-400 mb-5 line-clamp-2 leading-relaxed">
-                      {project.description}
+                    <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                      {project.summary}
                     </p>
+                  </button>
 
-                    {/* Technologies */}
-                    <div className="mb-5">
-                      <div className="flex flex-wrap gap-2">
-                        {project.technologies.map((tech) => (
-                          <span
-                            key={tech}
-                            className="px-3 py-1.5 bg-gradient-to-r from-gray-100 to-gray-50 dark:from-gray-700 dark:to-gray-800 text-gray-700 dark:text-gray-300 rounded-lg text-xs font-semibold border border-gray-200 dark:border-gray-600 shadow-sm"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Features List */}
-                    <div className="mb-6">
-                      <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3 flex items-center">
-                        <FaCode className="mr-2 text-indigo-500" size={12} />
-                        Key Features
-                      </h4>
-                      <ul className="space-y-2">
-                        {project.features.map((feature, idx) => (
-                          <li
-                            key={idx}
-                            className="text-sm text-gray-600 dark:text-gray-400 flex items-start"
-                          >
-                            <span className="w-2 h-2 bg-indigo-500 rounded-full mr-2.5 mt-1.5 flex-shrink-0" />
-                            <span>{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    {/* Action Buttons */}
-                    <div className="flex gap-3 pt-5 border-t border-gray-200 dark:border-gray-700">
+                  <div className="flex items-center gap-3 text-neutral-400 pt-1 shrink-0">
+                    {project.github && (
                       <a
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 flex items-center justify-center gap-2.5 px-5 py-3 bg-gray-50 dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-xl transition-all duration-300 hover:scale-105 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md font-semibold text-sm group"
+                        aria-label="GitHub Repository"
+                        className="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
                       >
-                        <FaGithub size={18} className="group-hover:scale-110 transition-transform" />
-                        <span>Code</span>
+                        <FaGithub size={15} />
                       </a>
+                    )}
+                    {project.demo && (
                       <a
                         href={project.demo}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`flex-1 flex items-center justify-center gap-2.5 px-5 py-3 bg-gradient-to-r ${project.gradient} hover:shadow-xl text-white rounded-xl transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-2xl font-semibold text-sm group`}
+                        aria-label="Live Demo"
+                        className="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
                       >
-                        <FaExternalLinkAlt size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                        <span>View Live</span>
+                        <FaExternalLinkAlt size={13} />
                       </a>
-                    </div>
+                    )}
                   </div>
-
-                  {/* Hover Effect Overlay */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500 pointer-events-none rounded-2xl`} />
                 </div>
-              </motion.div>
+
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-xs font-mono text-neutral-500 dark:text-neutral-400"
+                    >
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Architecture Deep Dive Drawer */}
+                {isExpanded && (
+                  <div className="mt-5 p-5 rounded-xl border border-neutral-200/80 dark:border-neutral-800 bg-neutral-100/40 dark:bg-neutral-900/40 space-y-4 text-xs font-mono animate-in fade-in duration-150">
+                    <div>
+                      <span className="text-neutral-400 uppercase tracking-wider block mb-1">
+                        Problem Constraint
+                      </span>
+                      <p className="font-sans text-xs text-neutral-700 dark:text-neutral-300">
+                        {project.architecture.problem}
+                      </p>
+                    </div>
+
+                    <div>
+                      <span className="text-neutral-400 uppercase tracking-wider block mb-1">
+                        Architecture Decision
+                      </span>
+                      <p className="font-sans text-xs text-neutral-700 dark:text-neutral-300">
+                        {project.architecture.decision}
+                      </p>
+                    </div>
+
+                    {project.metrics && (
+                      <div className="pt-2 border-t border-neutral-200 dark:border-neutral-800 flex flex-wrap gap-3">
+                        {project.metrics.map((m) => (
+                          <span
+                            key={m}
+                            className="inline-flex items-center gap-1.5 text-neutral-600 dark:text-neutral-400"
+                          >
+                            <span className="w-1 h-1 rounded-full bg-emerald-500" />
+                            <span>{m}</span>
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                )}
+              </article>
             );
           })}
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 }
