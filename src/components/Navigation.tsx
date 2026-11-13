@@ -96,17 +96,26 @@ export default function Navigation() {
 
       {/* Mobile menu dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50/95 dark:bg-neutral-950/95 backdrop-blur-md px-6 py-4 space-y-3">
+        <div className="md:hidden border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50/98 dark:bg-neutral-950/98 backdrop-blur-md px-6 py-5 space-y-4 animate-in slide-in-from-top-2 duration-150">
           {navItems.map((item) => (
             <Link
               key={item.name}
               href={item.href}
               onClick={() => setMobileMenuOpen(false)}
-              className="block text-sm text-neutral-700 dark:text-neutral-300 hover:text-neutral-950 dark:hover:text-neutral-50"
+              className="block text-base font-medium text-neutral-800 dark:text-neutral-200 hover:text-orange-600 dark:hover:text-orange-400 py-1"
             >
               {item.name}
             </Link>
           ))}
+          <div className="pt-3 border-t border-neutral-200 dark:border-neutral-800 flex items-center justify-between text-xs font-mono text-neutral-500">
+            <span>Theme: {theme}</span>
+            <button
+              onClick={toggleTheme}
+              className="px-2.5 py-1 rounded border border-neutral-300 dark:border-neutral-700"
+            >
+              Toggle
+            </button>
+          </div>
         </div>
       )}
     </nav>

@@ -67,33 +67,33 @@ export default function Experience() {
   const current = experiences.find((e) => e.id === activeId) || experiences[0];
 
   return (
-    <section id="experience" className="py-20 px-6 max-w-5xl mx-auto">
-      <div className="mb-12">
+    <section id="experience" className="py-16 sm:py-20 px-4 sm:px-6 max-w-5xl mx-auto">
+      <div className="mb-8 sm:mb-12">
         <h2 className="text-2xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
           Work Dossier
         </h2>
-        <p className="mt-2 text-sm text-neutral-500">
+        <p className="mt-1.5 sm:mt-2 text-sm text-neutral-500">
           Track record across software instruction, data engineering, and field operations.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 items-start">
         {/* Role Selector List */}
-        <div className="md:col-span-4 flex md:flex-col gap-2 overflow-x-auto pb-2 md:pb-0 border-b md:border-b-0 md:border-r border-neutral-200 dark:border-neutral-800 pr-0 md:pr-4">
+        <div className="md:col-span-4 flex md:flex-col gap-2 overflow-x-auto pb-3 md:pb-0 border-b md:border-b-0 md:border-r border-neutral-200 dark:border-neutral-800 pr-0 md:pr-4 no-scrollbar">
           {experiences.map((exp) => {
             const isSelected = exp.id === activeId;
             return (
               <button
                 key={exp.id}
                 onClick={() => setActiveId(exp.id)}
-                className={`text-left px-4 py-3 rounded-lg text-sm transition-all shrink-0 md:shrink border-l-2 ${
+                className={`text-left px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-lg text-xs sm:text-sm transition-all shrink-0 md:shrink border-l-2 ${
                   isSelected
                     ? 'border-orange-500 bg-neutral-900 text-neutral-50 dark:bg-neutral-100 dark:text-neutral-900 font-medium'
                     : 'border-transparent text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-900'
                 }`}
               >
-                <div className="font-medium truncate">{exp.organization}</div>
-                <div className={`text-xs mt-0.5 truncate ${isSelected ? 'text-neutral-300 dark:text-neutral-600' : 'text-neutral-400 dark:text-neutral-500'}`}>
+                <div className="font-medium whitespace-nowrap md:whitespace-normal">{exp.organization}</div>
+                <div className={`text-[11px] sm:text-xs mt-0.5 whitespace-nowrap md:whitespace-normal ${isSelected ? 'text-neutral-300 dark:text-neutral-600' : 'text-neutral-400 dark:text-neutral-500'}`}>
                   {exp.role}
                 </div>
               </button>
@@ -102,20 +102,20 @@ export default function Experience() {
         </div>
 
         {/* Detailed Dossier Card */}
-        <div className="md:col-span-8 p-6 sm:p-8 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900/30">
+        <div className="md:col-span-8 p-4 sm:p-8 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900/30">
           <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 pb-4 border-b border-neutral-100 dark:border-neutral-800">
             <div>
-              <span className="text-xs font-mono uppercase tracking-wider text-orange-600 dark:text-orange-400 font-medium">
+              <span className="text-[11px] sm:text-xs font-mono uppercase tracking-wider text-orange-600 dark:text-orange-400 font-medium">
                 {current.type}
               </span>
-              <h3 className="text-xl font-semibold text-neutral-900 dark:text-neutral-100 mt-1">
+              <h3 className="text-lg sm:text-xl font-semibold text-neutral-900 dark:text-neutral-100 mt-1">
                 {current.role}
               </h3>
-              <p className="text-sm text-neutral-500">
+              <p className="text-xs sm:text-sm text-neutral-500 mt-0.5">
                 {current.organization} · {current.location}
               </p>
             </div>
-            <span className="text-xs font-mono text-neutral-500 shrink-0">
+            <span className="text-xs font-mono text-neutral-500 shrink-0 mt-1 sm:mt-0">
               {current.period}
             </span>
           </div>
